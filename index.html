@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Приглашение | Диана & Дмитрий</title>
 
-  <!-- Мета для соцсетей -->
   <meta name="description" content="Приглашение на свадьбу Дианы и Дмитрия. 9 августа 2026. Ждём вас!">
   <meta property="og:title" content="Свадьба Дианы и Дмитрия | 9 августа 2026">
   <meta property="og:description" content="Мы долго шли к этому решению и с огромной радостью приглашаем вас стать свидетелями рождения нашей семьи.">
@@ -15,7 +13,6 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Шрифты -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -42,7 +39,6 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* Уменьшенные отступы между блоками */
     section, .music, .contacts-block, .wedding-block, .rsvp {
       margin: 0;
       padding: 30px 20px;
@@ -64,8 +60,7 @@
     .fade-in:nth-child(7) { animation-delay: 0.7s; }
     .fade-in:nth-child(8) { animation-delay: 0.8s; }
 
-    /* Для кнопок и ссылок добавляем задержку отдельно, если нужно */
-    .btn-location, .btn-chat, .rsvp button {
+    .btn-location, .rsvp button {
       animation-delay: 0.5s;
     }
 
@@ -74,7 +69,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Плавные переходы для кнопок */
     .btn-location, .rsvp button, .music button {
       transition: all 0.3s ease;
     }
@@ -144,7 +138,7 @@
       color: #1e1e1e;
     }
 
-    /* ===== ИСТОРИЯ (текст с минимальными отступами) ===== */
+    /* ===== ИСТОРИЯ ===== */
     .story {
       background: #ffffff;
       text-align: center;
@@ -161,7 +155,7 @@
       padding: 0 10px;
     }
     .text-block p {
-      margin-bottom: 0.5em; /* уменьшен отступ между абзацами */
+      margin-bottom: 0.5em;
     }
     .text-block .quote {
       font-style: italic;
@@ -170,7 +164,7 @@
       margin: 1.2em 0;
     }
 
-    /* ===== РОДНЫЕ И ЛЮБИМЫЕ (фото увеличено) ===== */
+    /* ===== РОДНЫЕ И ЛЮБИМЫЕ ===== */
     .invite-block {
       background: #ffffff;
       text-align: center;
@@ -185,7 +179,7 @@
       max-width: 100%;
     }
     .frame img {
-      width: 560px; /* увеличено в два раза */
+      width: 560px;
       height: 560px;
       object-fit: cover;
       max-width: 100%;
@@ -543,15 +537,12 @@
       margin-bottom: 10px;
       font-weight: 400;
     }
-    .rsvp .subtitle {
-      font-size: 28px;
-      margin-bottom: 20px;
-      opacity: 0.9;
-    }
+    /* убираем .subtitle для "Rsvp" */
     .rsvp .note {
       font-size: 16px;
       margin-bottom: 32px;
       opacity: 0.9;
+      margin-top: 0; /* прижато к заголовку */
     }
     .rsvp form {
       text-align: left;
@@ -574,23 +565,85 @@
       font-size: 16px;
     }
     .rsvp input::placeholder { color: rgba(255,255,255,0.6); }
-    .radio-group {
-      margin: 15px 0 10px;
-    }
-    .radio-group label {
+
+    /* Кастомные радио и чекбоксы с обводкой при выборе */
+    .rsvp .custom-checkbox,
+    .rsvp .custom-radio {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 16px;
+      margin: 10px 0;
+      cursor: pointer;
       font-weight: normal;
-      margin: 12px 0;
       color: #fff;
     }
-    .radio-group input[type="radio"] {
-      accent-color: #fff;
-      width: 18px;
-      height: 18px;
+    .rsvp .custom-checkbox input,
+    .rsvp .custom-radio input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
     }
+    .rsvp .checkmark {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 4px;
+      position: relative;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .rsvp .radio-mark {
+      border-radius: 50%;
+    }
+    .rsvp .custom-checkbox input:checked ~ .checkmark {
+      background: #fff;
+      border-color: #fff;
+    }
+    .rsvp .custom-checkbox input:checked ~ .checkmark::after {
+      content: "✓";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #b7a99a;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .rsvp .custom-radio input:checked ~ .radio-mark {
+      border-color: #f5e6d3; /* бежевая обводка */
+      background: rgba(255,255,255,0.2);
+    }
+    .rsvp .custom-radio input:checked ~ .radio-mark::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f5e6d3;
+    }
+    .rsvp .radio-mark {
+      border-radius: 50%;
+    }
+    .rsvp .checkmark,
+    .rsvp .radio-mark {
+      transition: all 0.2s;
+    }
+
+    .rsvp .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      margin-top: 8px;
+    }
+    .rsvp .checkbox-group .custom-checkbox {
+      margin: 0;
+    }
+
     .rsvp button {
       width: 100%;
       margin-top: 40px;
@@ -602,11 +655,25 @@
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s ease;
     }
     .rsvp button:hover {
       background: #fff;
       color: #b7a99a;
+    }
+
+    .success-message {
+      background: rgba(255,255,255,0.2);
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      color: #fff;
+      font-size: 18px;
+      border: 1px solid rgba(255,255,255,0.3);
+      display: none;
+    }
+    .success-message.show {
+      display: block;
+      animation: fadeInUp 0.5s ease forwards;
     }
 
     /* ===== КОНТАКТЫ ===== */
@@ -674,7 +741,6 @@
       color: #ffffff;
     }
 
-    /* Адаптив */
     @media (max-width: 680px) {
       .frame img { width: 100%; height: auto; max-width: 400px; }
       .slide img { height: 300px; }
@@ -701,6 +767,7 @@
       .heart-number i { font-size: 34px; }
       .heart-number span { font-size: 16px; }
       .names { font-size: 40px; bottom: 25%; }
+      .rsvp .checkbox-group { gap: 8px; }
     }
   </style>
 </head>
@@ -723,7 +790,7 @@
   <audio id="weddingAudio" src="Billie_Eilish_feat_Khalid_-_lovely_minus_66942047.mp3" loop preload="auto"></audio>
 </div>
 
-<!-- ===== ИСТОРИЯ (с анимацией и минимальными отступами) ===== -->
+<!-- ===== ИСТОРИЯ ===== -->
 <section class="story">
   <div class="text-block">
     <p class="fade-in">В жизни каждого человека есть моменты, которые хочется запомнить навсегда. Для нас такой день наступит этой осенью. Мы долго шли к этому решению, и сегодня с огромной радостью приглашаем вас стать свидетелями рождения нашей семьи.</p>
@@ -732,7 +799,7 @@
   </div>
 </section>
 
-<!-- ===== РОДНЫЕ И ЛЮБИМЫЕ (фото увеличено) ===== -->
+<!-- ===== РОДНЫЕ И ЛЮБИМЫЕ ===== -->
 <section class="invite-block">
   <div class="frame fade-in">
     <img src="photo_2026-08-07_17-28-04%20-%20Полина.jpg" alt="Пара">
@@ -861,20 +928,55 @@
 <section class="rsvp">
   <div class="container">
     <h2 class="fade-in">АНКЕТА ГОСТЯ</h2>
-    <div class="subtitle fade-in">Rsvp</div>
+    <!-- Убран подзаголовок "Rsvp" -->
     <p class="note fade-in">пожалуйста, подтвердите свое присутствие до 25.08.2026</p>
-    <form id="rsvpForm" action="https://formspree.io/f/xgawvjny" method="POST" class="fade-in">
+    <form id="rsvpForm" class="fade-in">
       <label>Ваше имя и фамилия</label>
       <input type="text" name="name" placeholder="Имя и фамилия" required>
+
       <label>Сможете ли Вы присутствовать</label>
       <div class="radio-group">
-        <label><input type="radio" name="attend" value="yes" required> Да, смогу</label>
-        <label><input type="radio" name="attend" value="no"> Нет, не смогу</label>
+        <label class="custom-radio">
+          <input type="radio" name="attend" value="Да, смогу" required>
+          <span class="radio-mark"></span> Да, смогу
+        </label>
+        <label class="custom-radio">
+          <input type="radio" name="attend" value="Нет, не смогу">
+          <span class="radio-mark"></span> Нет, не смогу
+        </label>
       </div>
+
       <label>Если Вы придете с парой или семьей, то впишите все имена</label>
       <input type="text" name="guests" placeholder="Имя/возраст">
+
+      <!-- Новый блок: выбор алкоголя (несколько вариантов) -->
+      <label>Предпочтения по алкоголю (можно выбрать несколько)</label>
+      <div class="checkbox-group">
+        <label class="custom-checkbox">
+          <input type="checkbox" name="alcohol[]" value="Шампанское">
+          <span class="checkmark"></span> Шампанское
+        </label>
+        <label class="custom-checkbox">
+          <input type="checkbox" name="alcohol[]" value="Вино">
+          <span class="checkmark"></span> Вино
+        </label>
+        <label class="custom-checkbox">
+          <input type="checkbox" name="alcohol[]" value="Водка">
+          <span class="checkmark"></span> Водка
+        </label>
+        <label class="custom-checkbox">
+          <input type="checkbox" name="alcohol[]" value="Виски">
+          <span class="checkmark"></span> Виски
+        </label>
+        <label class="custom-checkbox">
+          <input type="checkbox" name="alcohol[]" value="Безалкогольное">
+          <span class="checkmark"></span> Безалкогольное
+        </label>
+      </div>
+
       <button type="submit">Отправить</button>
     </form>
+    <div id="successMessage" class="success-message">✅ Спасибо! Ваш ответ отправлен.</div>
   </div>
 </section>
 
@@ -906,7 +1008,7 @@
   updateButtonIcon();
   audio.addEventListener('ended', () => { if (audio.loop) audio.play(); });
 
-  // Таймер до 9 августа 2026, 00:00
+  // Таймер
   const weddingDate = new Date('2026-08-09T00:00:00').getTime();
   function updateWeddingTimer() {
     const now = Date.now();
@@ -967,14 +1069,48 @@
   });
   createDots();
 
-  // Отправка формы RSVP (демо)
+  // Отправка формы RSVP
   const rsvpForm = document.getElementById('rsvpForm');
-  rsvpForm.addEventListener('submit', (e) => {
+  const successMessage = document.getElementById('successMessage');
+
+  rsvpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    alert('Спасибо! Ваш ответ отправлен (демо-режим).');
-    rsvpForm.reset();
+
+    const formData = new FormData(rsvpForm);
+    // Для чекбоксов alcohol[] - собираем значения
+    const data = {};
+    for (let [key, value] of formData.entries()) {
+      if (key === 'alcohol[]') {
+        if (!data.alcohol) data.alcohol = [];
+        data.alcohol.push(value);
+      } else {
+        data[key] = value;
+      }
+    }
+
+    try {
+      const response = await fetch('https://formspree.io/f/xgawvjny', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        successMessage.classList.add('show');
+        rsvpForm.reset();
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 5000);
+      } else {
+        alert('Произошла ошибка. Пожалуйста, попробуйте ещё раз.');
+      }
+    } catch (error) {
+      alert('Ошибка соединения. Проверьте интернет и попробуйте снова.');
+    }
   });
 </script>
 </body>
 </html>
-
