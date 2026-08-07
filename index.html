@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Приглашение | Диана & Дмитрий</title>
+  <title>Приглашение | Дмитрий & Диана</title>
 
-  <meta name="description" content="Приглашение на свадьбу Дианы и Дмитрия. 9 августа 2026. Ждём вас!">
-  <meta property="og:title" content="Свадьба Дианы и Дмитрия | 9 августа 2026">
+  <meta name="description" content="Приглашение на свадьбу Дмитрия и Дианы. 9 августа 2026. Ждём вас!">
+  <meta property="og:title" content="Свадьба Дмитрия и Дианы | 9 августа 2026">
   <meta property="og:description" content="Мы долго шли к этому решению и с огромной радостью приглашаем вас стать свидетелями рождения нашей семьи.">
   <meta property="og:image" content="photo_2026-08-07_17-28-09%20-%20Полина.jpg">
   <meta property="og:url" content="">
@@ -57,7 +57,6 @@
       transform: translateY(0);
     }
 
-    /* Задержки для последовательного появления */
     .fade-in-scroll:nth-child(1) { transition-delay: 0.1s; }
     .fade-in-scroll:nth-child(2) { transition-delay: 0.2s; }
     .fade-in-scroll:nth-child(3) { transition-delay: 0.3s; }
@@ -132,7 +131,7 @@
       color: #1e1e1e;
     }
 
-    /* ===== ИСТОРИЯ ===== */
+    /* ===== ИСТОРИЯ (уменьшенные отступы) ===== */
     .story {
       background: #ffffff;
       text-align: center;
@@ -149,13 +148,13 @@
       padding: 0 10px;
     }
     .text-block p {
-      margin-bottom: 0.3em;
+      margin-bottom: 0.15em;
     }
     .text-block .quote {
       font-style: italic;
       font-size: 1.1em;
       color: #1e1e1e;
-      margin: 0.8em 0;
+      margin: 0.6em 0;
     }
 
     /* ===== РОДНЫЕ И ЛЮБИМЫЕ ===== */
@@ -324,9 +323,10 @@
       box-shadow: 0 12px 20px rgba(0,0,0,0.2);
       transform: rotate(var(--rot, 0deg));
     }
+    /* Увеличиваем фото в локации */
     .polaroid-card img {
-      width: 130px;
-      height: 130px;
+      width: 170px;
+      height: 170px;
       object-fit: cover;
     }
     .p1-wrap { --rot: -8deg; position: relative; top: -10px; }
@@ -383,17 +383,34 @@
       margin-bottom: 16px;
       color: #1e1e1e;
     }
+
+    /* Блок цветов с подписями */
     .colors {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 24px;
       margin: 25px 0 20px;
+      flex-wrap: wrap;
     }
-    .colors span {
+    .color-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .color-item span {
       width: 60px;
       height: 60px;
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      flex-shrink: 0;
+    }
+    .color-label {
+      font-size: 12px;
+      color: #1e1e1e;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.3px;
     }
 
     /* ===== СЛАЙДЕР ===== */
@@ -559,18 +576,37 @@
     }
     .rsvp input::placeholder { color: rgba(255,255,255,0.6); }
 
-    .rsvp .custom-checkbox,
-    .rsvp .custom-radio {
+    /* Стандартные радио-кнопки */
+    .rsvp .radio-group {
+      margin: 8px 0 10px;
+    }
+    .rsvp .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: normal;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+    .rsvp .radio-group input[type="radio"] {
+      accent-color: #fff;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Чекбоксы для алкоголя */
+    .rsvp .custom-checkbox {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin: 10px 0;
+      margin: 6px 0;
       cursor: pointer;
       font-weight: normal;
       color: #fff;
     }
-    .rsvp .custom-checkbox input,
-    .rsvp .custom-radio input {
+    .rsvp .custom-checkbox input {
       position: absolute;
       opacity: 0;
       width: 0;
@@ -586,9 +622,6 @@
       transition: all 0.2s;
       flex-shrink: 0;
     }
-    .rsvp .radio-mark {
-      border-radius: 50%;
-    }
     .rsvp .custom-checkbox input:checked ~ .checkmark {
       background: #fff;
       border-color: #fff;
@@ -603,34 +636,11 @@
       font-size: 16px;
       font-weight: bold;
     }
-    .rsvp .custom-radio input:checked ~ .radio-mark {
-      border-color: #f5e6d3;
-      background: rgba(255,255,255,0.2);
-    }
-    .rsvp .custom-radio input:checked ~ .radio-mark::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #f5e6d3;
-    }
-    .rsvp .radio-mark {
-      border-radius: 50%;
-    }
-    .rsvp .checkmark,
-    .rsvp .radio-mark {
-      transition: all 0.2s;
-    }
 
-    /* Напитки в столбик */
     .rsvp .checkbox-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
       margin-top: 8px;
     }
     .rsvp .checkbox-group .custom-checkbox {
@@ -739,7 +749,7 @@
       .slide img { height: 300px; }
       .wedding-block .timer span { font-size: 38px; }
       .wedding-block .timer { gap: 15px; }
-      .polaroid-card img { width: 100px; height: 100px; }
+      .polaroid-card img { width: 130px; height: 130px; } /* уменьшаем на мобильных */
       .contacts-block h2 { font-size: 38px; }
       .names-sign { font-size: 34px; }
       .invite { font-size: 22px; }
@@ -767,11 +777,11 @@
 
 <!-- ===== ПЕРВЫЙ ЭКРАН ===== -->
 <section class="hero">
-  <img src="photo_2026-08-07_17-28-09%20-%20Полина.jpg" alt="Диана и Дмитрий">
+  <img src="photo_2026-08-07_17-28-09%20-%20Полина.jpg" alt="Дмитрий и Диана">
   <div class="hero-overlay"></div>
   <div class="date">09<br>08<br>26</div>
   <div class="names">
-    Диана <span class="amp">&</span> Дмитрий
+    Дмитрий <span class="amp">&</span> Диана
   </div>
 </section>
 
@@ -866,17 +876,29 @@
   </div>
 </section>
 
-<!-- ===== ДРЕСС-КОД ===== -->
+<!-- ===== ДРЕСС-КОД (обновлённые цвета и подписи) ===== -->
 <section class="dresscode-section">
   <h2 class="fade-in-scroll">ДРЕСС - КОД</h2>
   <div class="subtitle fade-in-scroll">dress-code</div>
   <p class="fade-in-scroll">Мы очень ждём и с удовольствием готовимся к нашему незабываемому дню!</p>
   <p class="fade-in-scroll">Поддержите нас вашими улыбками и объятиями, а также красивыми нарядами в палитре торжества:</p>
   <div class="colors fade-in-scroll">
-    <span style="background:#87CEEB;" title="Небесно-голубой"></span>
-    <span style="background:#7B3F00;" title="Шоколад"></span>
-    <span style="background:#FDEBD0;" title="Сливочное масло"></span>
-    <span style="background:#FFFFF0;" title="Айвори"></span>
+    <div class="color-item">
+      <span style="background:#daf3fa;"></span>
+      <span class="color-label">Небесно-голубой</span>
+    </div>
+    <div class="color-item">
+      <span style="background:#563500;"></span>
+      <span class="color-label">Шоколад</span>
+    </div>
+    <div class="color-item">
+      <span style="background:#efddcd;"></span>
+      <span class="color-label">Айвори</span>
+    </div>
+    <div class="color-item">
+      <span style="background:#f5eacc;"></span>
+      <span class="color-label">Сливочное масло</span>
+    </div>
   </div>
   <p class="fade-in-scroll">Захватите с собой удобную обувь для танцев!</p>
 </section>
@@ -927,17 +949,15 @@
 
       <label>Сможете ли Вы присутствовать?</label>
       <div class="radio-group">
-        <label class="custom-radio">
+        <label>
           <input type="radio" name="attend" value="Да, смогу" required>
-          <span class="radio-mark"></span> Да, смогу
+          Да, смогу
         </label>
-        <label class="custom-radio">
+        <label>
           <input type="radio" name="attend" value="Нет, не смогу">
-          <span class="radio-mark"></span> Нет, не смогу
+          Нет, не смогу
         </label>
       </div>
-
-      <!-- Поле "Если Вы придете с парой..." удалено -->
 
       <label>Предпочтения по алкоголю (можно выбрать несколько)</label>
       <div class="checkbox-group">
@@ -978,7 +998,7 @@
     <div class="divider fade-in-scroll"></div>
     <p class="invite fade-in-scroll">С НЕТЕРПЕНИЕМ ЖДЕМ<br>ВСТРЕЧИ С ВАМИ<br>НА НАШЕЙ СВАДЬБЕ!</p>
     <p class="love-text fade-in-scroll">С любовью,</p>
-    <p class="names-sign fade-in-scroll">Диана & Дмитрий</p>
+    <p class="names-sign fade-in-scroll">Дмитрий & Диана</p>
   </div>
 </section>
 
@@ -1068,7 +1088,6 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        // Можно отключить наблюдение после появления
         observer.unobserve(entry.target);
       }
     });
