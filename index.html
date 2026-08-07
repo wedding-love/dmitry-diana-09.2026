@@ -44,10 +44,25 @@
     /* Уменьшенные отступы между блоками */
     section, .music, .contacts-block, .wedding-block {
       margin: 0;
-      padding: 30px 20px; /* уменьшили отступы */
+      padding: 30px 20px;
     }
 
     .hero, .wedding-block { padding: 0; }
+
+    /* ===== БАЗОВАЯ АНИМАЦИЯ ===== */
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.3s; }
+    .fade-in:nth-child(3) { animation-delay: 0.5s; }
+    .fade-in:nth-child(4) { animation-delay: 0.7s; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     /* ===== ПЕРВЫЙ ЭКРАН ===== */
     .hero {
@@ -67,7 +82,7 @@
     }
     .names {
       position: absolute;
-      bottom: 22%; /* подняли выше */
+      bottom: 22%;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
@@ -115,7 +130,7 @@
       color: #1e1e1e;
     }
 
-    /* ===== ИСТОРИЯ (текст с анимацией) ===== */
+    /* ===== ИСТОРИЯ (текст с минимальными отступами) ===== */
     .story {
       background: #ffffff;
       text-align: center;
@@ -125,34 +140,23 @@
       max-width: 720px;
       margin: 0 auto;
       font-size: 19px;
-      line-height: 1.9;
+      line-height: 1.8;
       color: #1e1e1e;
       white-space: pre-line;
       text-align: center;
       padding: 0 10px;
     }
     .text-block p {
-      margin-bottom: 1.4em;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease forwards;
+      margin-bottom: 0.8em; /* уменьшено */
     }
-    .text-block p:nth-child(1) { animation-delay: 0.2s; }
-    .text-block p:nth-child(2) { animation-delay: 0.6s; }
-    .text-block p:nth-child(3) { animation-delay: 1.0s; }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     .text-block .quote {
       font-style: italic;
       font-size: 1.1em;
       color: #1e1e1e;
-      margin: 1.8em 0;
+      margin: 1.2em 0;
     }
 
-    /* ===== РОДНЫЕ И ЛЮБИМЫЕ (увеличен) ===== */
+    /* ===== РОДНЫЕ И ЛЮБИМЫЕ (фото увеличено) ===== */
     .invite-block {
       background: #ffffff;
       text-align: center;
@@ -163,21 +167,23 @@
       padding: 10px 10px 18px 10px;
       display: inline-block;
       box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-      margin-bottom: 35px;
+      margin-bottom: 30px;
+      max-width: 100%;
     }
     .frame img {
-      width: 340px; /* увеличен размер */
-      height: 340px;
+      width: 560px; /* увеличено в два раза (было 280px) */
+      height: 560px;
       object-fit: cover;
+      max-width: 100%;
     }
     .invite-block h2 {
       font-size: 38px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       font-weight: 400;
       color: #1e1e1e;
     }
     .invite-block p {
-      max-width: 700px; /* увеличена ширина текста */
+      max-width: 700px;
       margin: 0 auto;
       font-size: 18px;
       line-height: 1.8;
@@ -276,7 +282,7 @@
     .location .sub {
       font-size: 32px;
       opacity: 0.9;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
     .info .main {
       font-weight: 500;
@@ -335,13 +341,13 @@
     .timing h2 { font-size: 44px; font-weight: 400; }
     .timing .sub {
       font-size: 32px;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
       opacity: 0.9;
     }
     .timeline {
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 35px;
     }
     .item {
       max-width: 340px;
@@ -445,7 +451,7 @@
     }
     .dot.active { background: #b7a99a; width: 12px; height: 12px; }
 
-    /* ===== ТАЙМЕР ===== */
+    /* ===== ТАЙМЕР (заголовок выше, таймер ближе к низу) ===== */
     .wedding-block {
       position: relative;
       height: 85vh;
@@ -468,14 +474,14 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      padding: 40px 20px;
+      padding: 10px 20px 40px; /* уменьшили верхний отступ */
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 100%;
     }
     .wedding-block h1 {
-      margin-top: 30px;
+      margin-top: 60px; /* увеличен отступ сверху, чтобы поднять заголовок выше */
       font-size: clamp(32px, 7vw, 48px);
       letter-spacing: 2px;
       font-weight: 400;
@@ -485,8 +491,9 @@
       display: flex;
       justify-content: center;
       gap: 30px;
-      margin-bottom: 40px;
+      margin-bottom: 20px; /* уменьшен отступ снизу, чтобы таймер был ближе к краю фото */
       flex-wrap: wrap;
+      align-self: flex-end; /* прижимаем к низу контейнера */
     }
     .wedding-block .timer div {
       text-align: center;
@@ -573,7 +580,7 @@
 
     /* Адаптив */
     @media (max-width: 680px) {
-      .frame img { width: 260px; height: 260px; }
+      .frame img { width: 100%; height: auto; max-width: 400px; }
       .slide img { height: 300px; }
       .wedding-block .timer span { font-size: 38px; }
       .wedding-block .timer { gap: 15px; }
@@ -588,10 +595,10 @@
       .text-block { font-size: 17px; }
     }
     @media (max-width: 480px) {
-      .frame img { width: 200px; height: 200px; }
+      .frame img { max-width: 300px; }
       .wedding-block .timer span { font-size: 28px; }
       .wedding-block .timer { gap: 10px; }
-      .wedding-block h1 { font-size: 22px; }
+      .wedding-block h1 { font-size: 22px; margin-top: 40px; }
       .slider-section { padding: 20px 15px; }
       .heart-number { width: 34px; height: 34px; }
       .heart-number i { font-size: 34px; }
@@ -619,27 +626,29 @@
   <audio id="weddingAudio" src="Billie_Eilish_feat_Khalid_-_lovely_minus_66942047.mp3" loop preload="auto"></audio>
 </div>
 
-<!-- ===== ИСТОРИЯ (с анимацией) ===== -->
+<!-- ===== ИСТОРИЯ (с анимацией и минимальными отступами) ===== -->
 <section class="story">
   <div class="text-block">
-    <p>В жизни каждого человека есть моменты, которые хочется запомнить навсегда. Для нас такой день наступит этой осенью. Мы долго шли к этому решению, и сегодня с огромной радостью приглашаем вас стать свидетелями рождения нашей семьи.</p>
-    <p class="quote">«Любовь — это единственное, что растет, когда мы ею делимся».</p>
-    <p>Ваше присутствие, ваши улыбки и теплые слова станут для нас самым ценным подарком в этот важный день. Мы подготовили атмосферу уюта, тепла и искреннего веселья, чтобы разделить это счастье вместе с вами.</p>
+    <p class="fade-in">В жизни каждого человека есть моменты, которые хочется запомнить навсегда. Для нас такой день наступит этой осенью. Мы долго шли к этому решению, и сегодня с огромной радостью приглашаем вас стать свидетелями рождения нашей семьи.</p>
+    <p class="fade-in quote">«Любовь — это единственное, что растет, когда мы ею делимся».</p>
+    <p class="fade-in">Ваше присутствие, ваши улыбки и теплые слова станут для нас самым ценным подарком в этот важный день. Мы подготовили атмосферу уюта, тепла и искреннего веселья, чтобы разделить это счастье вместе с вами.</p>
   </div>
 </section>
 
-<!-- ===== РОДНЫЕ И ЛЮБИМЫЕ (увеличен) ===== -->
+<!-- ===== РОДНЫЕ И ЛЮБИМЫЕ (фото увеличено) ===== -->
 <section class="invite-block">
-  <div class="frame"><img src="photo_2026-08-07_17-28-04%20-%20Полина.jpg" alt="Пара"></div>
-  <h2>РОДНЫЕ И ЛЮБИМЫЕ!</h2>
-  <p>Хотим, чтобы вы разделили с нами радость и были на торжестве в самый лучший и трогательный день в нашей жизни!</p>
+  <div class="frame">
+    <img src="photo_2026-08-07_17-28-04%20-%20Полина.jpg" alt="Пара">
+  </div>
+  <h2 class="fade-in">РОДНЫЕ И ЛЮБИМЫЕ!</h2>
+  <p class="fade-in">Хотим, чтобы вы разделили с нами радость и были на торжестве в самый лучший и трогательный день в нашей жизни!</p>
 </section>
 
 <!-- ===== КАЛЕНДАРЬ ===== -->
 <section class="calendar-block">
-  <div class="month">— АВГУСТ 2026 —</div>
-  <div class="weekdays"><span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span></div>
-  <div class="days">
+  <div class="month fade-in">— АВГУСТ 2026 —</div>
+  <div class="weekdays fade-in"><span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span></div>
+  <div class="days fade-in">
     <span></span><span></span><span></span><span></span><span></span><span>1</span><span>2</span>
     <span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
     <span>
@@ -653,47 +662,47 @@
     <span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
     <span>31</span>
   </div>
-  <div class="calendar-date">09.08.2026</div>
-  <p class="footer-text">Мы будем безумно рады видеть вас в кругу наших гостей</p>
+  <div class="calendar-date fade-in">09.08.2026</div>
+  <p class="footer-text fade-in">Мы будем безумно рады видеть вас в кругу наших гостей</p>
 </section>
 
 <!-- ===== МЕСТО ПРОВЕДЕНИЯ ===== -->
 <section class="location">
-  <h2>МЕСТО<br>ПРОВЕДЕНИЯ</h2>
-  <div class="sub">location</div>
-  <div class="info">
+  <h2 class="fade-in">МЕСТО<br>ПРОВЕДЕНИЯ</h2>
+  <div class="sub fade-in">location</div>
+  <div class="info fade-in">
     <p class="main">ГАСТРОНОМИКА</p>
     <p>Камышовое шоссе, 34</p>
     <p class="address">Севастополь</p>
   </div>
-  <a href="https://www.google.com/maps/place/%D0%9A%D0%B0%D0%BC%D1%8B%D1%88%D0%BE%D0%B2%D0%BE%D0%B5+%D1%88.,+34,+%D0%A1%D0%B5%D0%B2%D0%B0%D1%81%D1%82%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C/@44.5640233,33.4723518,17z/data=!3m1!4b1!4m10!1m2!2m1!1z0LPQsNGB0YLRgNC-0L3QvtC80LjQutCwINC60LDQvNGL0YjQvtCy0L7QtSDRiNC-0YHRgdC1LCAzNCA!3m6!1s0x40952323f217727b:0x2f9097761eb79c9f!8m2!3d44.5640233!4d33.4749267!15sCjrQs9Cw0YHRgtGA0L7QvdC-0LzQuNC60LAg0LrQsNC80YvRiNC-0LLQvtC1INGI0L7RgdGB0LUsIDM0kgEQZ2VvY29kZWRfYWRkcmVzc-ABAA!16s%2Fg%2F11fncshmsz?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-location">ПОКАЗАТЬ НА КАРТЕ</a>
+  <a href="https://www.google.com/maps/place/%D0%9A%D0%B0%D0%BC%D1%8B%D1%88%D0%BE%D0%B2%D0%BE%D0%B5+%D1%88.,+34,+%D0%A1%D0%B5%D0%B2%D0%B0%D1%81%D1%82%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C/@44.5640233,33.4723518,17z/data=!3m1!4b1!4m10!1m2!2m1!1z0LPQsNGB0YLRgNC-0L3QvtC80LjQutCwINC60LDQvNGL0YjQvtCy0L7QtSDRiNC-0YHRgdC1LCAzNCA!3m6!1s0x40952323f217727b:0x2f9097761eb79c9f!8m2!3d44.5640233!4d33.4749267!15sCjrQs9Cw0YHRgtGA0L7QvdC-0LzQuNC60LAg0LrQsNC80YvRiNC-0LLQvtC1INGI0L7RgdGB0LUsIDM0kgEQZ2VvY29kZWRfYWRkcmVzc-ABAA!16s%2Fg%2F11fncshmsz?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-location fade-in">ПОКАЗАТЬ НА КАРТЕ</a>
   <div class="photos-loc">
-    <div class="polaroid-card p1-wrap"><img src="0B9A5693.jpg" alt="Локация 1"></div>
-    <div class="polaroid-card p2-wrap"><img src="0B9A5568.jpg" alt="Локация 2"></div>
+    <div class="polaroid-card p1-wrap fade-in"><img src="0B9A5693.jpg" alt="Локация 1"></div>
+    <div class="polaroid-card p2-wrap fade-in"><img src="0B9A5568.jpg" alt="Локация 2"></div>
   </div>
 </section>
 
 <!-- ===== ТАЙМИНГ ===== -->
 <section class="timing">
-  <h2>ТАЙМИНГ ДНЯ</h2>
-  <div class="sub">Timing</div>
+  <h2 class="fade-in">ТАЙМИНГ ДНЯ</h2>
+  <div class="sub fade-in">Timing</div>
   <div class="timeline">
-    <div class="item">
+    <div class="item fade-in">
       <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
       <div class="time">14:00</div>
       <div class="title">Сбор гостей</div>
     </div>
-    <div class="item">
+    <div class="item fade-in">
       <div class="icon"><i class="fas fa-ring"></i></div>
       <div class="time">15:00</div>
       <div class="title">Церемония</div>
     </div>
-    <div class="item">
+    <div class="item fade-in">
       <div class="icon"><i class="fas fa-utensils"></i></div>
       <div class="time">16:00</div>
       <div class="title">Банкет</div>
     </div>
-    <div class="item">
+    <div class="item fade-in">
       <div class="icon"><i class="fas fa-music"></i></div>
       <div class="time">21:00</div>
       <div class="title">Финал</div>
@@ -703,24 +712,24 @@
 
 <!-- ===== ДРЕСС-КОД ===== -->
 <section class="dresscode-section">
-  <h2>ДРЕСС - КОД</h2>
-  <div class="subtitle">dress-code</div>
-  <p>Мы очень ждём и с удовольствием готовимся к нашему незабываемому дню!</p>
-  <p>Поддержите нас вашими улыбками и объятиями, а также красивыми нарядами в палитре торжества:</p>
-  <div class="colors">
+  <h2 class="fade-in">ДРЕСС - КОД</h2>
+  <div class="subtitle fade-in">dress-code</div>
+  <p class="fade-in">Мы очень ждём и с удовольствием готовимся к нашему незабываемому дню!</p>
+  <p class="fade-in">Поддержите нас вашими улыбками и объятиями, а также красивыми нарядами в палитре торжества:</p>
+  <div class="colors fade-in">
     <span style="background:#87CEEB;" title="Небесно-голубой"></span>
     <span style="background:#7B3F00;" title="Шоколад"></span>
     <span style="background:#FDEBD0;" title="Сливочное масло"></span>
     <span style="background:#FFFFF0;" title="Айвори"></span>
   </div>
-  <p>Захватите с собой удобную обувь для танцев!</p>
+  <p class="fade-in">Захватите с собой удобную обувь для танцев!</p>
 </section>
 
 <!-- ===== ДЕТАЛИ ===== -->
 <section class="details-section">
-  <h2>ДЕТАЛИ</h2>
-  <div class="subtitle">details</div>
-  <p>Никакой суеты и торжественных речей. Только близкие люди, без которых мы не представляем этот день, атмосфера наполненная любовью и много веселья!</p>
+  <h2 class="fade-in">ДЕТАЛИ</h2>
+  <div class="subtitle fade-in">details</div>
+  <p class="fade-in">Никакой суеты и торжественных речей. Только близкие люди, без которых мы не представляем этот день, атмосфера наполненная любовью и много веселья!</p>
 </section>
 
 <!-- ===== СЛАЙДЕР ===== -->
@@ -737,11 +746,11 @@
   <div class="slider-dots" id="sliderDots"></div>
 </section>
 
-<!-- ===== ТАЙМЕР ===== -->
+<!-- ===== ТАЙМЕР (заголовок выше, таймер внизу) ===== -->
 <section class="wedding-block">
   <div class="overlay"></div>
   <div class="content">
-    <h1>ДО НАШЕЙ СВАДЬБЫ<br>ОСТАЛОСЬ:</h1>
+    <h1 class="fade-in">ДО НАШЕЙ СВАДЬБЫ<br>ОСТАЛОСЬ:</h1>
     <div class="timer">
       <div><span id="weddingDays">0</span><small>ДНЕЙ</small></div>
       <div><span id="weddingHours">0</span><small>ЧАСОВ</small></div>
@@ -754,13 +763,13 @@
 <!-- ===== КОНТАКТЫ ===== -->
 <section class="contacts-block">
   <div class="contacts-content">
-    <h2>КОНТАКТЫ</h2>
-    <p class="desc">По всем вопросам вы можете<br>обращаться к нашему свадебному<br>координатору</p>
-    <p class="person">Полина<br><span>(организатор)</span><br>+7 978 535-49-46<br>@aist_wedding</p>
-    <div class="divider"></div>
-    <p class="invite">С НЕТЕРПЕНИЕМ ЖДЕМ<br>ВСТРЕЧИ С ВАМИ<br>НА НАШЕЙ СВАДЬБЕ!</p>
-    <p class="love-text">С любовью,</p>
-    <p class="names-sign">Диана & Дмитрий</p>
+    <h2 class="fade-in">КОНТАКТЫ</h2>
+    <p class="desc fade-in">По всем вопросам вы можете<br>обращаться к нашему свадебному<br>координатору</p>
+    <p class="person fade-in">Полина<br><span>(организатор)</span><br>+7 978 535-49-46<br>@aist_wedding</p>
+    <div class="divider fade-in"></div>
+    <p class="invite fade-in">С НЕТЕРПЕНИЕМ ЖДЕМ<br>ВСТРЕЧИ С ВАМИ<br>НА НАШЕЙ СВАДЬБЕ!</p>
+    <p class="love-text fade-in">С любовью,</p>
+    <p class="names-sign fade-in">Диана & Дмитрий</p>
   </div>
 </section>
 
@@ -779,7 +788,7 @@
   updateButtonIcon();
   audio.addEventListener('ended', () => { if (audio.loop) audio.play(); });
 
-  // Таймер до 9 августа 2026, 00:00 (исправлено)
+  // Таймер до 9 августа 2026, 00:00
   const weddingDate = new Date('2026-08-09T00:00:00').getTime();
   function updateWeddingTimer() {
     const now = Date.now();
