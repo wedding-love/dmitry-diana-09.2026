@@ -131,7 +131,7 @@
       color: #1e1e1e;
     }
 
-    /* ===== ИСТОРИЯ (уменьшенные отступы) ===== */
+    /* ===== ИСТОРИЯ ===== */
     .story {
       background: #ffffff;
       text-align: center;
@@ -323,7 +323,6 @@
       box-shadow: 0 12px 20px rgba(0,0,0,0.2);
       transform: rotate(var(--rot, 0deg));
     }
-    /* Увеличиваем фото в локации */
     .polaroid-card img {
       width: 170px;
       height: 170px;
@@ -384,7 +383,7 @@
       color: #1e1e1e;
     }
 
-    /* Блок цветов с подписями */
+    /* Блок цветов - без подписей */
     .colors {
       display: flex;
       justify-content: center;
@@ -392,25 +391,12 @@
       margin: 25px 0 20px;
       flex-wrap: wrap;
     }
-    .color-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-    .color-item span {
+    .colors span {
       width: 60px;
       height: 60px;
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       flex-shrink: 0;
-    }
-    .color-label {
-      font-size: 12px;
-      color: #1e1e1e;
-      white-space: nowrap;
-      font-family: 'Inter', sans-serif;
-      letter-spacing: 0.3px;
     }
 
     /* ===== СЛАЙДЕР ===== */
@@ -576,24 +562,47 @@
     }
     .rsvp input::placeholder { color: rgba(255,255,255,0.6); }
 
-    /* Стандартные радио-кнопки */
-    .rsvp .radio-group {
-      margin: 8px 0 10px;
-    }
-    .rsvp .radio-group label {
+    /* Кастомные радио-кнопки */
+    .rsvp .custom-radio {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      margin: 10px 0;
+      cursor: pointer;
       font-weight: normal;
-      margin: 8px 0;
-      cursor: pointer;
+      color: #fff;
+      position: relative;
     }
-    .rsvp .radio-group input[type="radio"] {
-      accent-color: #fff;
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
+    .rsvp .custom-radio input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .rsvp .radio-mark {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 50%;
+      position: relative;
+      transition: all 0.2s;
       flex-shrink: 0;
+    }
+    .rsvp .custom-radio input:checked ~ .radio-mark {
+      border-color: #f5e6d3;
+      background: rgba(255,255,255,0.2);
+    }
+    .rsvp .custom-radio input:checked ~ .radio-mark::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f5e6d3;
     }
 
     /* Чекбоксы для алкоголя */
@@ -749,7 +758,7 @@
       .slide img { height: 300px; }
       .wedding-block .timer span { font-size: 38px; }
       .wedding-block .timer { gap: 15px; }
-      .polaroid-card img { width: 130px; height: 130px; } /* уменьшаем на мобильных */
+      .polaroid-card img { width: 130px; height: 130px; }
       .contacts-block h2 { font-size: 38px; }
       .names-sign { font-size: 34px; }
       .invite { font-size: 22px; }
@@ -876,30 +885,21 @@
   </div>
 </section>
 
-<!-- ===== ДРЕСС-КОД (обновлённые цвета и подписи) ===== -->
+<!-- ===== ДРЕСС-КОД (цвета без подписей, перечислены в тексте) ===== -->
 <section class="dresscode-section">
   <h2 class="fade-in-scroll">ДРЕСС - КОД</h2>
   <div class="subtitle fade-in-scroll">dress-code</div>
   <p class="fade-in-scroll">Мы очень ждём и с удовольствием готовимся к нашему незабываемому дню!</p>
   <p class="fade-in-scroll">Поддержите нас вашими улыбками и объятиями, а также красивыми нарядами в палитре торжества:</p>
   <div class="colors fade-in-scroll">
-    <div class="color-item">
-      <span style="background:#daf3fa;"></span>
-      <span class="color-label">Небесно-голубой</span>
-    </div>
-    <div class="color-item">
-      <span style="background:#563500;"></span>
-      <span class="color-label">Шоколад</span>
-    </div>
-    <div class="color-item">
-      <span style="background:#efddcd;"></span>
-      <span class="color-label">Айвори</span>
-    </div>
-    <div class="color-item">
-      <span style="background:#f5eacc;"></span>
-      <span class="color-label">Сливочное масло</span>
-    </div>
+    <span style="background:#daf3fa;" title="Небесно-голубой"></span>
+    <span style="background:#563500;" title="Шоколад"></span>
+    <span style="background:#efddcd;" title="Айвори"></span>
+    <span style="background:#f5eacc;" title="Сливочное масло"></span>
   </div>
+  <p class="fade-in-scroll" style="font-size: 15px; color: #1e1e1e; margin-bottom: 10px;">
+    <strong>Небесно-голубой, шоколад, айвори, сливочное масло</strong>
+  </p>
   <p class="fade-in-scroll">Захватите с собой удобную обувь для танцев!</p>
 </section>
 
@@ -938,7 +938,7 @@
   </div>
 </section>
 
-<!-- ===== RSVP (АНКЕТА ГОСТЯ) ===== -->
+<!-- ===== RSVP (АНКЕТА ГОСТЯ) с кастомными радио-кнопками ===== -->
 <section class="rsvp">
   <div class="container">
     <h2 class="fade-in-scroll">АНКЕТА ГОСТЯ</h2>
@@ -949,13 +949,13 @@
 
       <label>Сможете ли Вы присутствовать?</label>
       <div class="radio-group">
-        <label>
+        <label class="custom-radio">
           <input type="radio" name="attend" value="Да, смогу" required>
-          Да, смогу
+          <span class="radio-mark"></span> Да, смогу
         </label>
-        <label>
+        <label class="custom-radio">
           <input type="radio" name="attend" value="Нет, не смогу">
-          Нет, не смогу
+          <span class="radio-mark"></span> Нет, не смогу
         </label>
       </div>
 
@@ -1078,7 +1078,7 @@
   });
   createDots();
 
-  // ===== АНИМАЦИЯ ПРИ ПРОКРУТКЕ (Intersection Observer) =====
+  // ===== АНИМАЦИЯ ПРИ ПРОКРУТКЕ =====
   const observerOptions = {
     threshold: 0.15,
     rootMargin: '0px 0px -30px 0px'
