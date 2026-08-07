@@ -1,10 +1,24 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Приглашение | Диана & Дмитрий</title>
-  <!-- Тонкие, элегантные шрифты: Cormorant Garamond (light) и Inter -->
+
+  <!-- Meta для соцсетей (Open Graph и Twitter) -->
+  <meta name="description" content="Приглашение на свадьбу Дианы и Дмитрия. 9 августа 2025. Ждём вас!">
+  <meta property="og:title" content="Свадьба Дианы и Дмитрия | 9 августа 2025">
+  <meta property="og:description" content="Мы долго шли к этому решению и с огромной радостью приглашаем вас стать свидетелями рождения нашей семьи.">
+  <meta property="og:image" content="photo_2026-08-07_17-28-09_-_Полина.jpg">
+  <meta property="og:url" content="">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Свадьба Дианы и Дмитрия | 9 августа 2025">
+  <meta name="twitter:description" content="Приглашаем вас разделить с нами радость в этот важный день.">
+  <meta name="twitter:image" content="photo_2026-08-07_17-28-09_-_Полина.jpg">
+
+  <!-- Шрифты: Cormorant Garamond (light) и Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -22,7 +36,6 @@
       line-height: 1.5;
     }
 
-    /* Все заголовки — тонкий, изящный шрифт */
     h1, h2, h3, .hero .names, .date, .love, .title, .month, .location h2, .timing h2, 
     .dresscode-section h2, .details-section h2, .rsvp h2, .wedding-block h1, 
     .contacts-block h2, .invite, .names-sign, .music-text, .time, .sub, .subtitle,
@@ -32,18 +45,15 @@
       letter-spacing: 1px;
     }
 
-    /* Основной текст — Inter, лёгкий и читаемый */
-    p, .text, .desc, .person, .address, .footer-text, .note, label, .radio-group, button, .btn, .btn-location, .btn-chat, .time {
+    p, .text, .desc, .person, .address, .footer-text, .note, label, .radio-group, button, .btn, .btn-location, .time {
       font-family: 'Inter', sans-serif;
     }
 
-    /* Убираем все отступы между блоками — идут встык */
     section, .music, .rsvp, .contacts-block, .wedding-block {
       margin: 0;
       padding: 60px 20px;
     }
 
-    /* Некоторые блоки имеют свой внутренний отступ, но внешний margin = 0 */
     .hero, .wedding-block {
       padding: 0;
     }
@@ -92,7 +102,7 @@
       font-weight: 400;
     }
 
-    /* ===== МУЗЫКА (уменьшенный плеер) ===== */
+    /* ===== МУЗЫКА ===== */
     .music {
       text-align: center;
       background: #ffffff;
@@ -119,7 +129,7 @@
       color: #2c2c2c;
     }
 
-    /* ===== ИСТОРИЯ (без фото) ===== */
+    /* ===== ИСТОРИЯ (без фото, новый текст) ===== */
     .story {
       background: #ffffff;
       text-align: center;
@@ -135,17 +145,13 @@
       font-size: 1.2em;
       display: inline-block;
     }
-    .title {
-      font-size: 28px;
-      margin: 20px 0 16px;
-      font-weight: 400;
-    }
     .text {
-      max-width: 560px;
+      max-width: 660px;
       margin: 0 auto;
-      font-size: 17px;
-      line-height: 1.7;
+      font-size: 18px;
+      line-height: 1.8;
       color: #3e3e3e;
+      white-space: pre-line; /* для переносов строк */
     }
 
     /* ===== БЛОК "РОДНЫЕ И ЛЮБИМЫЕ" ===== */
@@ -178,7 +184,7 @@
       color: #444;
     }
 
-    /* ===== КАЛЕНДАРЬ (число 9 в сердце) без пульсации ===== */
+    /* ===== КАЛЕНДАРЬ ===== */
     .calendar-block {
       background: #ffffff;
       text-align: center;
@@ -243,9 +249,9 @@
       color: #4a4a4a;
     }
 
-    /* ===== МЕСТО ПРОВЕДЕНИЯ (НОВЫЙ ЦВЕТ) ===== */
+    /* ===== МЕСТО ПРОВЕДЕНИЯ ===== */
     .location {
-      background: #b7a99a;   /* тёплый серо-бежевый, заменяет голубой */
+      background: #b7a99a;
       color: #fff;
       text-align: center;
     }
@@ -305,9 +311,9 @@
     .p1-wrap { --rot: -8deg; position: relative; top: -10px; }
     .p2-wrap { --rot: 8deg; position: relative; top: 15px; }
 
-    /* ===== ТАЙМИНГ ДНЯ (НОВЫЙ ЦВЕТ, без анимации появления) ===== */
+    /* ===== ТАЙМИНГ (без описаний) ===== */
     .timing {
-      background: #b7a99a;   /* единый тёплый оттенок */
+      background: #b7a99a;
       color: #fff;
       text-align: center;
     }
@@ -331,9 +337,8 @@
     .icon { font-size: 48px; margin-bottom: 12px; color: #fff; }
     .time { font-size: 32px; font-weight: 400; margin-bottom: 8px; }
     .timing .title { font-size: 22px; font-weight: 500; }
-    .desc { font-size: 15px; opacity: 0.85; margin-top: 8px; font-style: italic; }
 
-    /* ===== ДРЕСС-КОД И ДЕТАЛИ (белые блоки) ===== */
+    /* ===== ДРЕСС-КОД И ДЕТАЛИ ===== */
     .dresscode-section, .details-section {
       background: #ffffff;
       text-align: center;
@@ -364,7 +369,6 @@
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
-    /* убрали .btn-chat */
 
     /* ===== СЛАЙДЕР ===== */
     .slider-section {
@@ -422,7 +426,7 @@
     }
     .dot.active { background: #b7a99a; width: 12px; height: 12px; }
 
-    /* ===== ТАЙМЕР "ДО СВАДЬБЫ" (без рамок) ===== */
+    /* ===== ТАЙМЕР С ФОНОМ ===== */
     .wedding-block {
       position: relative;
       height: 85vh;
@@ -483,7 +487,7 @@
       font-weight: 300;
     }
 
-    /* ===== КОНТАКТЫ (НОВЫЙ ЦВЕТ) ===== */
+    /* ===== КОНТАКТЫ ===== */
     .contacts-block {
       background: #b7a99a;
       color: #ffffff;
@@ -535,7 +539,7 @@
       font-weight: 400;
     }
 
-    /* ===== RSVP (НОВЫЙ ЦВЕТ) ===== */
+    /* ===== RSVP ===== */
     .rsvp {
       background: #b7a99a;
       color: #fff;
@@ -650,11 +654,28 @@
   <audio id="weddingAudio" src="music.mp3" loop preload="auto"></audio>
 </div>
 
-<!-- ИСТОРИЯ (без детских фото) -->
+<!-- ИСТОРИЯ -->
 <section class="story">
   <div class="love">Диана & Дмитрий <span class="heart-icon">♡</span></div>
-  <div class="title">Узнаете этих детишек?</div>
-  <div class="text">Да-да, это мы!<br><br>Время летит так быстро, представляете? И вот мы уже повзрослели,<br>кажется пришло время создавать свою семью!</div>
+  <div class="text">
+В жизни каждого человека есть моменты,
+которые хочется запомнить навсегда.
+Для нас такой день наступит этой
+осенью. Мы долго шли к этому решению,
+и сегодня с огромной радостью
+приглашаем вас стать свидетелями
+рождения нашей семьи.
+
+«Любовь — это единственное, что растет,
+когда мы ею делимся».
+
+Ваше присутствие, ваши улыбки и
+теплые слова станут для нас самым
+ценным подарком в этот важный день.
+Мы подготовили атмосферу уюта, тепла и
+искреннего веселья, чтобы разделить это
+счастье вместе с вами.
+  </div>
 </section>
 
 <!-- РОДНЫЕ И ЛЮБИМЫЕ -->
@@ -690,7 +711,11 @@
 <section class="location">
   <h2>МЕСТО<br>ПРОВЕДЕНИЯ</h2>
   <div class="sub">location</div>
-  <div class="info"><p class="main">ГАСТРОНОМИКА</p><p>Камышовое шоссе, 34</p><p class="address">Севастополь</p></div>
+  <div class="info">
+    <p class="main">ГАСТРОНОМИКА</p>
+    <p>Камышовое шоссе, 34</p>
+    <p class="address">Севастополь</p>
+  </div>
   <a href="#" class="btn-location">ПОКАЗАТЬ НА КАРТЕ</a>
   <div class="photos-loc">
     <div class="polaroid-card p1-wrap"><img src="0B9A5693.jpg" alt="Локация 1"></div>
@@ -698,19 +723,35 @@
   </div>
 </section>
 
-<!-- ТАЙМИНГ ДНЯ (обновлён) -->
+<!-- ТАЙМИНГ ДНЯ -->
 <section class="timing">
   <h2>ТАЙМИНГ ДНЯ</h2>
   <div class="sub">Timing</div>
   <div class="timeline">
-    <div class="item"><div class="icon"><i class="fas fa-map-marker-alt"></i></div><div class="time">14:00</div><div class="title">Сбор гостей</div><div class="desc">Встреча шампанским, приятные знакомства</div></div>
-    <div class="item"><div class="icon"><i class="fas fa-ring"></i></div><div class="time">15:00</div><div class="title">Церемония</div><div class="desc">Клятвы, обмен кольцами, первый поцелуй</div></div>
-    <div class="item"><div class="icon"><i class="fas fa-utensils"></i></div><div class="time">16:00</div><div class="title">Банкет</div><div class="desc">Праздничный ужин, тосты и душевные речи</div></div>
-    <div class="item"><div class="icon"><i class="fas fa-music"></i></div><div class="time">21:00</div><div class="title">Финал</div><div class="desc">Завершение вечера, тёплые слова и прощание</div></div>
+    <div class="item">
+      <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="time">14:00</div>
+      <div class="title">Сбор гостей</div>
+    </div>
+    <div class="item">
+      <div class="icon"><i class="fas fa-ring"></i></div>
+      <div class="time">15:00</div>
+      <div class="title">Церемония</div>
+    </div>
+    <div class="item">
+      <div class="icon"><i class="fas fa-utensils"></i></div>
+      <div class="time">16:00</div>
+      <div class="title">Банкет</div>
+    </div>
+    <div class="item">
+      <div class="icon"><i class="fas fa-music"></i></div>
+      <div class="time">21:00</div>
+      <div class="title">Финал</div>
+    </div>
   </div>
 </section>
 
-<!-- ДРЕСС-КОД (новые цвета) -->
+<!-- ДРЕСС-КОД -->
 <section class="dresscode-section">
   <h2>ДРЕСС - КОД</h2>
   <div class="subtitle">dress-code</div>
@@ -725,7 +766,7 @@
   <p>Захватите с собой удобную обувь для танцев!</p>
 </section>
 
-<!-- ДЕТАЛИ (без чата) -->
+<!-- ДЕТАЛИ -->
 <section class="details-section">
   <h2>ДЕТАЛИ</h2>
   <div class="subtitle">details</div>
@@ -746,7 +787,7 @@
   <div class="slider-dots" id="sliderDots"></div>
 </section>
 
-<!-- ТАЙМЕР ДО СВАДЬБЫ -->
+<!-- ТАЙМЕР -->
 <section class="wedding-block">
   <div class="overlay"></div>
   <div class="content">
@@ -760,7 +801,7 @@
   </div>
 </section>
 
-<!-- АНКЕТА ГОСТЯ (с formspree) -->
+<!-- АНКЕТА ГОСТЯ -->
 <section class="rsvp">
   <div class="container">
     <h2>АНКЕТА ГОСТЯ</h2>
@@ -781,7 +822,7 @@
   </div>
 </section>
 
-<!-- КОНТАКТЫ (обновлены) -->
+<!-- КОНТАКТЫ -->
 <section class="contacts-block">
   <div class="contacts-content">
     <h2>КОНТАКТЫ</h2>
@@ -858,8 +899,7 @@
   prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateSlider(); });
   nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % totalSlides; updateSlider(); });
   createDots();
-
-  // Форма отправляется на formspree, дополнительный обработчик не нужен
 </script>
 </body>
 </html>
+```
