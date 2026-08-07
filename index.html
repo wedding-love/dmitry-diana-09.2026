@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -42,7 +43,7 @@
     }
 
     /* Уменьшенные отступы между блоками */
-    section, .music, .contacts-block, .wedding-block {
+    section, .music, .contacts-block, .wedding-block, .rsvp {
       margin: 0;
       padding: 30px 20px;
     }
@@ -55,13 +56,27 @@
       animation: fadeInUp 0.8s ease forwards;
     }
     .fade-in:nth-child(1) { animation-delay: 0.1s; }
-    .fade-in:nth-child(2) { animation-delay: 0.3s; }
-    .fade-in:nth-child(3) { animation-delay: 0.5s; }
-    .fade-in:nth-child(4) { animation-delay: 0.7s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+    .fade-in:nth-child(5) { animation-delay: 0.5s; }
+    .fade-in:nth-child(6) { animation-delay: 0.6s; }
+    .fade-in:nth-child(7) { animation-delay: 0.7s; }
+    .fade-in:nth-child(8) { animation-delay: 0.8s; }
+
+    /* Для кнопок и ссылок добавляем задержку отдельно, если нужно */
+    .btn-location, .btn-chat, .rsvp button {
+      animation-delay: 0.5s;
+    }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(25px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Плавные переходы для кнопок */
+    .btn-location, .rsvp button, .music button {
+      transition: all 0.3s ease;
     }
 
     /* ===== ПЕРВЫЙ ЭКРАН ===== */
@@ -119,7 +134,6 @@
       font-size: 44px;
       cursor: pointer;
       color: #1e1e1e;
-      transition: transform 0.2s;
       padding: 0;
     }
     .music button:hover { transform: scale(1.05); }
@@ -147,7 +161,7 @@
       padding: 0 10px;
     }
     .text-block p {
-      margin-bottom: 0.8em; /* уменьшено */
+      margin-bottom: 0.5em; /* уменьшен отступ между абзацами */
     }
     .text-block .quote {
       font-style: italic;
@@ -171,7 +185,7 @@
       max-width: 100%;
     }
     .frame img {
-      width: 560px; /* увеличено в два раза (было 280px) */
+      width: 560px; /* увеличено в два раза */
       height: 560px;
       object-fit: cover;
       max-width: 100%;
@@ -302,7 +316,6 @@
       text-decoration: none;
       font-size: 14px;
       letter-spacing: 1px;
-      transition: 0.2s;
       background: transparent;
       border-radius: 50px;
     }
@@ -448,10 +461,11 @@
       background: #ccc;
       margin: 0 6px;
       cursor: pointer;
+      transition: 0.2s;
     }
     .dot.active { background: #b7a99a; width: 12px; height: 12px; }
 
-    /* ===== ТАЙМЕР (заголовок выше, таймер ближе к низу) ===== */
+    /* ===== ТАЙМЕР ===== */
     .wedding-block {
       position: relative;
       height: 85vh;
@@ -474,14 +488,14 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      padding: 10px 20px 40px; /* уменьшили верхний отступ */
+      padding: 10px 20px 40px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 100%;
     }
     .wedding-block h1 {
-      margin-top: 60px; /* увеличен отступ сверху, чтобы поднять заголовок выше */
+      margin-top: 60px;
       font-size: clamp(32px, 7vw, 48px);
       letter-spacing: 2px;
       font-weight: 400;
@@ -491,9 +505,9 @@
       display: flex;
       justify-content: center;
       gap: 30px;
-      margin-bottom: 20px; /* уменьшен отступ снизу, чтобы таймер был ближе к краю фото */
+      margin-bottom: 20px;
       flex-wrap: wrap;
-      align-self: flex-end; /* прижимаем к низу контейнера */
+      align-self: flex-end;
     }
     .wedding-block .timer div {
       text-align: center;
@@ -511,6 +525,88 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 300;
+    }
+
+    /* ===== RSVP (АНКЕТА ГОСТЯ) ===== */
+    .rsvp {
+      background: #b7a99a;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .rsvp .container {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .rsvp h2 {
+      font-size: 44px;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+    .rsvp .subtitle {
+      font-size: 28px;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+    .rsvp .note {
+      font-size: 16px;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+    .rsvp form {
+      text-align: left;
+    }
+    .rsvp label {
+      display: block;
+      font-size: 16px;
+      margin: 22px 0 8px;
+      font-weight: 500;
+      color: #fff;
+    }
+    .rsvp input[type="text"] {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.7);
+      background: transparent;
+      padding: 10px 0;
+      color: #fff;
+      outline: none;
+      font-size: 16px;
+    }
+    .rsvp input::placeholder { color: rgba(255,255,255,0.6); }
+    .radio-group {
+      margin: 15px 0 10px;
+    }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: normal;
+      margin: 12px 0;
+      color: #fff;
+    }
+    .radio-group input[type="radio"] {
+      accent-color: #fff;
+      width: 18px;
+      height: 18px;
+    }
+    .rsvp button {
+      width: 100%;
+      margin-top: 40px;
+      padding: 14px;
+      border: 1px solid #fff;
+      border-radius: 50px;
+      background: transparent;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .rsvp button:hover {
+      background: #fff;
+      color: #b7a99a;
     }
 
     /* ===== КОНТАКТЫ ===== */
@@ -593,6 +689,7 @@
       .time { font-size: 26px; }
       .timing .title { font-size: 18px; }
       .text-block { font-size: 17px; }
+      .rsvp h2 { font-size: 38px; }
     }
     @media (max-width: 480px) {
       .frame img { max-width: 300px; }
@@ -621,8 +718,8 @@
 
 <!-- ===== МУЗЫКА ===== -->
 <div class="music">
-  <button id="musicToggleBtn"><i class="fas fa-play"></i></button>
-  <div class="music-text">ВКЛЮЧИТЬ / ВЫКЛЮЧИТЬ МУЗЫКУ</div>
+  <button id="musicToggleBtn" class="fade-in"><i class="fas fa-play"></i></button>
+  <div class="music-text fade-in">ВКЛЮЧИТЬ / ВЫКЛЮЧИТЬ МУЗЫКУ</div>
   <audio id="weddingAudio" src="Billie_Eilish_feat_Khalid_-_lovely_minus_66942047.mp3" loop preload="auto"></audio>
 </div>
 
@@ -637,7 +734,7 @@
 
 <!-- ===== РОДНЫЕ И ЛЮБИМЫЕ (фото увеличено) ===== -->
 <section class="invite-block">
-  <div class="frame">
+  <div class="frame fade-in">
     <img src="photo_2026-08-07_17-28-04%20-%20Полина.jpg" alt="Пара">
   </div>
   <h2 class="fade-in">РОДНЫЕ И ЛЮБИМЫЕ!</h2>
@@ -746,7 +843,7 @@
   <div class="slider-dots" id="sliderDots"></div>
 </section>
 
-<!-- ===== ТАЙМЕР (заголовок выше, таймер внизу) ===== -->
+<!-- ===== ТАЙМЕР ===== -->
 <section class="wedding-block">
   <div class="overlay"></div>
   <div class="content">
@@ -757,6 +854,27 @@
       <div><span id="weddingMinutes">0</span><small>МИНУТ</small></div>
       <div><span id="weddingSeconds">0</span><small>СЕКУНД</small></div>
     </div>
+  </div>
+</section>
+
+<!-- ===== RSVP (АНКЕТА ГОСТЯ) ===== -->
+<section class="rsvp">
+  <div class="container">
+    <h2 class="fade-in">АНКЕТА ГОСТЯ</h2>
+    <div class="subtitle fade-in">Rsvp</div>
+    <p class="note fade-in">пожалуйста, подтвердите свое присутствие до 25.08.2026</p>
+    <form id="rsvpForm" action="https://formspree.io/f/xgawvjny" method="POST" class="fade-in">
+      <label>Ваше имя и фамилия</label>
+      <input type="text" name="name" placeholder="Имя и фамилия" required>
+      <label>Сможете ли Вы присутствовать</label>
+      <div class="radio-group">
+        <label><input type="radio" name="attend" value="yes" required> Да, смогу</label>
+        <label><input type="radio" name="attend" value="no"> Нет, не смогу</label>
+      </div>
+      <label>Если Вы придете с парой или семьей, то впишите все имена</label>
+      <input type="text" name="guests" placeholder="Имя/возраст">
+      <button type="submit">Отправить</button>
+    </form>
   </div>
 </section>
 
@@ -848,6 +966,15 @@
     updateSlider();
   });
   createDots();
+
+  // Отправка формы RSVP (демо)
+  const rsvpForm = document.getElementById('rsvpForm');
+  rsvpForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Спасибо! Ваш ответ отправлен (демо-режим).');
+    rsvpForm.reset();
+  });
 </script>
 </body>
 </html>
+```
